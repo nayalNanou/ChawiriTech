@@ -4,15 +4,35 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome! Oissuya{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <link rel="stylesheet" href="{{ asset('vendors/bootstrap/bootstrap.min.js') }}">
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('socialMedia/social_media.css') }}">
             <link rel="stylesheet" type="text/css" href="{{ asset('semantic/semantic.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">
             <script
                 src="https://code.jquery.com/jquery-3.1.1.min.js"
                 integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
                 crossorigin="anonymous"></script>
                 <script src="{{ asset('semantic/semantic.min.js') }}"></script>
         {% endblock %}
+
+
+    <!-- ===============================================-->
+    <!--    Template
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
+    <link rel="manifest" href="assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <link href="assets/css/theme.css" rel="stylesheet" />
+    <!-- ===============================================-->
+    <!--    Template
+    <!-- ===============================================-->
     </head>
     <body>
         <div class="ui top demo sidebar ui segment" style="">
@@ -101,10 +121,26 @@
         </div>
 
         <div class="pusher">
-            <button onclick="toggleSidebar()" style="position: fixed; top:50%; left:50%">Ouvrir le menu</button>
             <!-- Site content !-->
-             {% block body %}{% endblock %}
-            {% include 'home/components/social_media_item.html.twig' %}
+               <main class="main" id="top">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" data-navbar-on-scroll="data-navbar-on-scroll">
+                        <div class="container"><a class="navbar-brand d-inline-flex" href="index.html"><img class="d-inline-block" src="assets/img/gallery/logo.svg" alt="logo" /><span class="text-1000 fs-3 fw-bold ms-2 text-gradient">foodwaGon</span></a>
+                        <div class="HeaderTopMenuBtn collapse navbar-collapse border-top border-lg-0 my-2 mt-lg-0" id="navbarSupportedContent">
+                            
+                            <div class="d-flex mt-4 mt-lg-0 ms-lg-auto ms-xl-0">
+                            <div class="input-group-icon pe-2"><i class="fas fa-search input-box-icon text-primary"></i>
+                                <input class="form-control border-0 input-box bg-100" type="search" placeholder="Search Food" aria-label="Search" />
+                            </div>
+                            <button class="HeaderBtnMenu btn btn-white shadow-warning text-warning" onclick="toggleSidebar()"> 
+                            <svg xmlns="http://www.w3.org/2000/svg" style="color:yellow;" width="25" height="25" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+                            </button>
+                            </div>
+                        </div>
+                        </div>
+                    </nav>
+             {% block body %}
+            {% endblock %}
+            </main>
         </div>
 
         {% block javascripts %}
