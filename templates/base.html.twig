@@ -6,7 +6,104 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('assets/styles/_components/social_media.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('semantic/semantic.min.css') }}">
+            <script
+                src="https://code.jquery.com/jquery-3.1.1.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+                crossorigin="anonymous"></script>
+                <script src="{{ asset('semantic/semantic.min.js') }}"></script>
         {% endblock %}
+    </head>
+    <body>
+        <div class="ui top demo sidebar ui segment" style="">
+            <div class="ui center aligned page grid">
+                <div class="one column row">
+                <div class="sixteen wide column">
+                    <h3 class="ui header">New Content Awaits</h3>
+                </div>
+                </div>
+                <div class="three column divided row">
+                <div class="column">
+                    <img class="ui wireframe image" src="/images/wireframe/media-paragraph.png">
+                </div>
+                <div class="column">
+                    <img class="ui wireframe image" src="/images/wireframe/media-paragraph.png">
+                </div>
+                <div class="column">
+                    <img class="ui wireframe image" src="/images/wireframe/media-paragraph.png">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui left demo vertical inverted labeled icon sidebar menu" style="">
+            <a class="item">
+                <i class="home icon"></i>
+                Home
+            </a>
+            <a class="item">
+                <i class="block layout icon"></i>
+                Topics
+            </a>
+            <a class="item">
+                <i class="smile icon"></i>
+                Friends
+            </a>
+        </div>
+
+        <div class="ui right demo sidebar vertical inverted menu" style="">
+            <a class="header item">File Permissions</a>
+            <a class="item">Share on Social</a>
+            <a class="item">Share by E-mail</a>
+            <a class="item">Edit Permissions</a>
+            <a class="item">Delete Permanently</a>
+        </div>
+
+        <div class="ui bottom demo inverted nine item labeled icon sidebar menu" style="">
+            <a class="item">
+                <i class="home icon"></i>
+                Home
+            </a>
+            <a class="item">
+                <i class="block layout icon"></i>
+                Topics
+            </a>
+            <a class="item">
+                <i class="smile icon"></i>
+                Friends
+            </a>
+            <a class="item">
+                <i class="calendar icon"></i>
+                History
+            </a>
+            <a class="item">
+                <i class="mail icon"></i>
+                Messages
+            </a>
+            <a class="item">
+                <i class="chat icon"></i>
+                Discussions
+            </a>
+            <a class="item">
+                <i class="trophy icon"></i>
+                Achievements
+            </a>
+            <a class="item">
+                <i class="shop icon"></i>
+                Store
+            </a>
+            <a class="item">
+                <i class="settings icon"></i>
+                Settings
+            </a>
+        </div>
+
+        <div class="pusher">
+            <button onclick="toggleSidebar()" style="position: fixed; top:50%; left:50%">Ouvrir le menu</button>
+            <!-- Site content !-->
+             {% block body %}{% endblock %}
+            {% include 'home/components/social_media_item.html.twig' %}
+        </div>
 
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
@@ -15,10 +112,12 @@
             (function(w,d,s,o,f,js,fjs){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments);};(js=d.createElement(s)),(fjs=d.getElementsByTagName(s)[0]);js.id=o;js.src=f;js.async=1;js.referrerPolicy = "origin";fjs.parentNode.insertBefore(js,fjs);})(window,document,"script","copilot","https://script.copilot.live/v1/copilot.min.js?tkn=cat-9bx29oba");
             copilot("init",{});
         </script>
-        
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% include 'home/components/social_media_item.html.twig' %}
+        <script>
+            function toggleSidebar() {
+                $('.demo.sidebar')
+                    .sidebar('setting', 'transition', 'overlay')
+                    .sidebar('toggle');
+                }
+        </script>
     </body>
 </html>
