@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+	<link rel="stylesheet" href="{{ asset('css/food.css') }}" />
+{% endblock %}
+
+{% block body %}
+	<div class="main">
+		<h1>Nos catégorie de plats</h1>
+
+		<div class="food-category">
+			{% for foodCategory in foodCategories %}
+				<div class="card" data-id-category="{{ foodCategory.id }}" data-food-category-name="{{ foodCategory.name|capitalize }}">
+					<img src="{{ asset('pictures/' ~ foodCategory.image) }}" alt="{{ foodCategory.name }}" />
+					<span>{{ foodCategory.name|capitalize }}</span>
+				</div>
+			{% endfor %}
+		</div>
+
+		<h2 id="food-category-name" class="food-category-name">Voici notre sélection de plats</h2>
+
+		<div class="selected-foods" id="selected-foods">
+			{% for food in foods %}
+				<div class="food">
+					<img src="{{ asset('pictures/' ~ food.image) }}" alt="{{ food.name }}" />
+					<span>{{ food.name|capitalize }}</span>
+				</div>
+			{% endfor %}
+		</div>
+
+		<div class="modal-show-more" id="modal-show-more">
+			<div class="modal-content">
+
+			</div>
+		</div>
+	<div>
+
+	<script>
+		let baseUrl = "http://localhost:8000";
+
+		const foodCategories = document.querySelectorAll('.food-category .card');
+		const foodCategoriesLen = foodCategories.length;
+
+		const selectedFoods = document.getElementById('selected-foods');
+
+		const h2FoodCategoryName = document.getElementById('food-category-name');
+		const h2FoodCategoryNameOldValue = h2FoodCategoryName.innerText;
+
+		const modalShowMore = document.getElementById('modal-show-more');
+
+		for (let i = 0; i < foodCategoriesLen; i++) {
+			foodCategories[i].addEventListener('click', function(e) {
+				const foodCategoryId = this.dataset.idCategory;
+				const foodCategoryName = this.dataset.foodCategoryName;
+
+				fetch(baseUrl + '/api/food/category/' + foodCategoryId, {
+					'method': 'GET',
+					'headers': {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json'
+					}
+				})
+				.then(function(response) {
+					if (response.ok) {
+						return response.json();
+					}
+				})
+				.then(function(foods) {
+					const foodsLen = foods.length;
+
+					selectedFoods.innerHTML = '';
+
+					h2FoodCategoryName.innerHTML = h2FoodCategoryNameOldValue + ' - ' + foodCategoryName;
+
+					for (let i = 0; i < foodsLen; i++) {
+						const foodImage = "{{ asset('pictures/') }}" + foods[i].image;
+
+						const divFood = document.createElement('div');
+						const imgFood = document.createElement('img');
+						const spanFoodName = document.createElement('span');
+
+						divFood.className = 'food';
+
+						imgFood.src = foodImage;
+						imgFood.alt = foods[i].name;
+
+						spanFoodName.innerText = foods[i].name;
+
+						divFood.appendChild(imgFood);
+						divFood.appendChild(spanFoodName);
+
+						selectedFoods.appendChild(divFood);
+
+						divFood.addEventListener('click', function(e) {
+							modalShowMore.style.zIndex = 10;
+							modalShowMore.style.opacity = 1;
+
+							modalShowMore.addEventListener('click', function(e) {
+								e.target.style.opacity = 0;
+								e.target.style.zIndex = -1;
+							});
+						});
+					}
+				});
+			});
+		}
+	</script>
+{% endblock %}
