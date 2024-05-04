@@ -1,0 +1,7 @@
+.HeaderTopMenuBtn {
+    flex-direction: row-reverse;
+}
+
+.HeaderBtnMenu {
+   border: 2px solid #78866b !important
+}
