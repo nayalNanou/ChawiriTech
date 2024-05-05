@@ -18,9 +18,6 @@ class FoodController extends AbstractController
 
 		$foods = $entityManager->getRepository(Food::class)->findAll();
 
-		dump($foodCategories);
-		dump($foods);
-
 		return $this->render('food/index.html.twig', [
 			'foodCategories' => $foodCategories,
 			'foods' => $foods
