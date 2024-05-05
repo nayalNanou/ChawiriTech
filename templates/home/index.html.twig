@@ -1,31 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <!-- ===============================================-->
-    <!--    Main Content-->
-    <!-- ===============================================-->
 
-      <section class="py-5 overflow-hidden bg-primary" id="home">
+      <section class="py-5 overflow-hidden bg-primary" id="home" style="background-image:url(assets/img/gallery/backgroundHomepageImage.webp);background-position:center;background-size:cover;">
         <div class="container">
           <div class="row flex-center">
-            <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0"><a class="img-landing-banner" href="#!"><img class="img-fluid" src="assets/img/gallery/hero-header.png" alt="hero-header" /></a></div>
-            <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
-              <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">Are you starving?</h1>
-              <h1 class="text-800 mb-5 fs-4">Within a few clicks, find meals that<br class="d-none d-xxl-block" />are accessible near you</h1>
+            <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0"></div>
+            <div class="col-md-7 col-lg-6 py-8 text-md-start text-center" style="text-align: center !important;">
+              <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">Mort de faim?</h1>
+              <h1 class="text-800 mb-5 fs-4">Trouvez le repos eternel avec</br> <span style="font-weight:bolder">Le Bistro des Macchabés</span></h1>
     
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
       <section class="py-4 overflow-hidden">
 
         <div class="container">
           <div class="row h-100">
             <div class="col-lg-7 mx-auto text-center mt-7 mb-5">
-              <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">Nos plats SANG sationnels</h5>
+              <h5 class="SecondTitle fw-bold fs-3 fs-lg-5 lh-sm">Nos plats SANG sationnels !</h5>
             </div>
             <div class="col-12">
               <div class="carousel slide" id="carouselPopularItems" data-bs-touch="false" data-bs-interval="false">
@@ -232,21 +227,15 @@
               </div>
             </div>
           </div>
-        </div><!-- end of .container-->
+        </div>
 
       </section>
-      <!-- <section> close ============================-->
-      <!-- ============================================-->
-
-
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
       <section class="py-8 overflow-hidden">
 
         <div class="container">
           <div class="row flex-center mb-6">
             <div class="col-lg-7">
-              <h5 class="fw-bold fs-3 fs-lg-5 lh-sm text-center text-lg-start">Rechercher par organes</h5>
+              <h5 class="SecondTitle fw-bold fs-3 fs-lg-5 lh-sm text-center text-lg-start" style="text-align: center !important;">Rechercher par organes</h5>
             </div>
           </div>
           <div class="row flex-center">
@@ -441,42 +430,42 @@
               </div>
             </div>
           </div>
-        </div><!-- end of .container-->
+        </div>
 
       </section>
-      <!-- <section> close ============================-->
-      <!-- ============================================-->
 
 
       <section>
-        <div class="bg-holder" style="background-image:url(assets/img/gallery/cta-one-bg.png);background-position:center;background-size:cover;">
+        <div class="bg-holder" style="background-image:url(assets/img/gallery/zombie_and_momie.webp);background-position:center;background-size:cover;">
         </div>
-        <!--/.bg-holder-->
 
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-xxl-10">
               <div class="card card-span shadow-warning" style="border-radius: 35px;">
-                <div class="card-body py-5">
+                <div class="chefSectionTitle">
+                  <h2 class="SecondTitle fw-bold fs-3 fs-lg-5 lh-sm text-center text-lg-start">Nos chefs étoilés</h2c>
+                </div>
+                <div class="card-body">
                   <div class="row justify-content-evenly">
                     <div class="col-md-3">
-                      <div class="d-flex d-md-block d-xl-flex justify-content-evenly justify-content-lg-between"><img src="assets/img/icons/discounts.png" width="100" alt="..." />
+                      <div class="d-flex d-md-block d-xl-flex justify-content-evenly justify-content-lg-between"><img class="imageCuisinier" src="{{ asset('assets/img/gallery/cuisinier1.webp') }}" width="90" alt="cuisinier1" />
                         <div class="d-flex d-lg-block d-xl-flex flex-center">
-                          <h2 class="fw-bolder text-1000 mb-0 text-gradient">Daily<br class="d-none d-md-block" />Discounts </h2>
+                          <h2 class="fw-bolder text-1000 mb-0 text-gradient">Igor<br class="d-none d-md-block" />Mummystein </h2>
                         </div>
                       </div>
                     </div>
                     <div class="col-md-3 hr-vertical">
-                      <div class="d-flex d-md-block d-xl-flex justify-content-evenly justify-content-lg-between"><img src="assets/img/icons/live-tracking.png" width="100" alt="..." />
+                      <div class="d-flex d-md-block d-xl-flex justify-content-evenly justify-content-lg-between"><img class="imageCuisinier" src="{{ asset('assets/img/gallery/cuisinier2.webp') }}" width="87" height="87" alt="cuisinier1" />
                         <div class="d-flex d-lg-block d-xl-flex flex-center">
-                          <h2 class="fw-bolder text-1000 mb-0 text-gradient">Live Tracking</h2>
+                          <h2 class="fw-bolder text-1000 mb-0 text-gradient">Mortimer<br class="d-none d-md-block" /> LeBoucher </h2>
                         </div>
                       </div>
                     </div>
                     <div class="col-md-3 hr-vertical">
-                      <div class="d-flex d-md-block d-xl-flex justify-content-evenly justify-content-lg-between"><img src="assets/img/icons/quick-delivery.png" width="100" alt="..." />
+                      <div class="d-flex d-md-block d-xl-flex justify-content-evenly justify-content-lg-between"><img class="imageCuisinier" src="{{ asset('assets/img/gallery/cuisinier4.webp') }}" width="90" height="90" alt="cuisinier1" />
                         <div class="d-flex d-lg-block d-xl-flex flex-center">
-                          <h2 class="fw-bolder text-1000 mb-0 text-gradient">Quick Delivery </h2>
+                          <h2 class="fw-bolder text-1000 mb-0 text-gradient">Bouf<br class="d-none d-md-block" /> Bizhar </h2>
                         </div>
                       </div>
                     </div>
@@ -486,18 +475,25 @@
             </div>
           </div>
           <div class="row flex-center mt-md-8">
-            <div class="col-lg-5 d-none d-lg-block" style="margin-bottom: -122px;"> <img class="w-100" src="assets/img/gallery/phone-cta-one.png" alt="..." /></div>
+            <div class="col-lg-5 d-none d-lg-block" style="margin-bottom: -122px;"> 
+              <img style="border-radius: 10px;"
+                src="assets/img/gallery/menuHalloween.webp"
+                alt="soiree_halloween_img" /></div>
             <div class="col-lg-5 mt-7 mt-md-0">
-              <h1 class="text-primary">Install the app</h1>
-              <p>It's never been easier to order food. Look for the finest <br class="d-none d-xl-block" />discounts and you'll be lost in a world of delectable food.</p><a class="pe-2" href="https://www.apple.com/app-store/" target="_blank"><img src="assets/img/gallery/app-store.svg" width="160" alt="" /></a><a href="https://play.google.com/store/apps" target="_blank"><img src="assets/img/gallery/google-play.svg" width="160" alt="" /></a>
+              <h2 class="SecondTitle text-primary">Découvrez nos soirée Halloweens</h2>
+              <p style="color: ghostwhite;font-weight: 640;font-size: 1.1rem;}">
+                Que vous soyez un zombie affamé, une momie en quête de saveurs anciennes ou un vampire assoiffé de sang, notre menu spécialisé saura vous ravir.
+              <br class="d-none d-xl-block" /> Avec une ambiance lugubre, une musique ensorcelante et des surprises terrifiantes, notre soirée apéro Halloween promet d'être une expérience inoubliable.
+              </p>
+              <p class="EvenWeeklyText"> Tous les
+                <span class="DayOfEventStyle"> Mercredis</span> &
+                <span class="DayOfEventStyle"> Dimanches</span>
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
       <section class="pb-5 pt-8">
 
         <div class="container">
@@ -506,10 +502,10 @@
               <div class="card card-span mb-3 shadow-lg">
                 <div class="card-body py-0">
                   <div class="row justify-content-center">
-                    <div class="col-md-5 col-xl-7 col-xxl-8 g-0 order-0 order-md-1"><img class="img-fluid w-100 fit-cover h-100 rounded-top rounded-md-end rounded-md-top-0" src="assets/img/gallery/crispy-sandwiches.png" alt="..." /></div>
+                    <div class="col-md-5 col-xl-7 col-xxl-8 g-0 order-0 order-md-1"><img style="margin-top:30px;" class="img-fluid w-75 fit-cover h-75 rounded-top rounded-md-end rounded-md-top-0" src="assets/img/gallery/cerveau.webp" alt="cerveau" /></div>
                     <div class="col-md-7 col-xl-5 col-xxl-4 p-4 p-lg-5">
-                      <h1 class="card-title mt-xl-5 mb-4">Best deals <span class="text-primary"> Crispy Sandwiches</span></h1>
-                      <p class="fs-1">Enjoy the large size of sandwiches. Complete your meal with the perfect slice of sandwiches.</p>
+                      <h2 class="card-title mt-xl-5 mb-4">Nos meilleurs Ventes</h2>
+                      <p class="fs-1">Découvrez notre délice le plus recherché : le cerveau humain sauté à la perfection. Préparé avec soin par nos chefs étoilés, chaque morceau de cerveau est soigneusement nettoyé et assaisonné avec des herbes fraîches et des épices exotiques. Lentement sauté dans du beurre frais jusqu'à obtenir une texture tendre et fondante, chaque bouchée offre une explosion de saveurs riches et décadentes.</p>
                       <div class="d-grid bottom-0"><a class="btn btn-lg btn-primary mt-xl-6" href="#!">PROCEED TO ORDER<i class="fas fa-chevron-right ms-2"></i></a></div>
                     </div>
                   </div>
@@ -517,17 +513,10 @@
               </div>
             </div>
           </div>
-        </div><!-- end of .container-->
+        </div>
 
       </section>
-      <!-- <section> close ============================-->
-      <!-- ============================================-->
 
-
-
-
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
       <section class="py-0">
 
         <div class="container">
@@ -536,28 +525,21 @@
               <div class="card card-span mb-3 shadow-lg">
                 <div class="card-body py-0">
                   <div class="row justify-content-center">
-                    <div class="col-md-5 col-xl-7 col-xxl-8 g-0 order-md-0"><img class="img-fluid w-100 fit-cover h-100 rounded-top rounded-md-start rounded-md-top-0" src="assets/img/gallery/fried-chicken.png" alt="..." /></div>
+                    <div class="col-md-5 col-xl-7 col-xxl-8 g-0 order-md-0"><img class="img-fluid w-100 fit-cover h-100 rounded-top rounded-md-start rounded-md-top-0" src="assets/img/gallery/saint-valentin.webp" alt="saint-valentin" /></div>
                     <div class="col-md-7 col-xl-5 col-xxl-4 p-4 p-lg-5">
-                      <h1 class="card-title mt-xl-5 mb-4">Celebrate parties with <span class="text-primary">Fried Chicken</span></h1>
-                      <p class="fs-1">Get the best fried chicken smeared with a lip smacking lemon chili flavor. Check out best deals for fried chicken.</p>
-                      <div class="d-grid bottom-0"><a class="btn btn-lg btn-primary mt-xl-6" href="#!">PROCEED TO ORDER<i class="fas fa-chevron-right ms-2"></i></a></div>
+                      <h1 class="card-title mt-xl-5 mb-4">Celébrez votre Saint-Valentin <span class="text-primary">à nos côtés</span></h1>
+                      <p class="fs-1">Plongez dans une romance mortelle lors de notre soirée Saint-Valentin spécialement concoctée pour les âmes damnées, où les zombies et les momies trouveront leur amour éternel.</p>
+                      <div class="d-grid bottom-0"><a class="btn btn-lg btn-primary mt-xl-6" href="#!">Consulter<i class="fas fa-chevron-right ms-2"></i></a></div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div><!-- end of .container-->
+        </div>
 
       </section>
-      <!-- <section> close ============================-->
-      <!-- ============================================-->
 
-
-
-
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
       <section class="pt-5">
 
         <div class="container">
@@ -566,95 +548,54 @@
               <div class="card card-span mb-3 shadow-lg">
                 <div class="card-body py-0">
                   <div class="row justify-content-center">
-                    <div class="col-md-5 col-xl-7 col-xxl-8 g-0 order-0 order-md-1"><img class="img-fluid w-100 fit-cover h-100 rounded-top rounded-md-end rounded-md-top-0" src="assets/img/gallery/pizza.png" alt="..." /></div>
+                    <div class="col-md-5 col-xl-7 col-xxl-8 g-0 order-0 order-md-1"><img class="img-fluid w-100 fit-cover h-100 rounded-top rounded-md-end rounded-md-top-0" src="assets/img/gallery/poumon.webp" alt="salade_poumon" /></div>
                     <div class="col-md-7 col-xl-5 col-xxl-4 p-4 p-lg-5">
-                      <h1 class="card-title mt-xl-5 mb-4">Wanna eat hot & <span class="text-primary">spicy Pizza?</span></h1>
-                      <p class="fs-1">Pair up with a friend and enjoy the hot and crispy pizza pops. Try it with the best deals.</p>
-                      <div class="d-grid bottom-0"><a class="btn btn-lg btn-primary mt-xl-6" href="#!">PROCEED TO ORDER<i class="fas fa-chevron-right ms-2"></i></a></div>
+                      <h1 class="card-title mt-xl-5 mb-4">Vous manger leger? Testez nos <span class="text-primary">salades de poumons</span></h1>
+                      <p class="fs-1">Plongez dans une expérience culinaire unique avec notre salade de poumons bio, où la fraîcheur des légumes croquants rencontre la texture tendre et savoureuse des poumons fraîchement préparés.</p>
+                      <div class="d-grid bottom-0"><a class="btn btn-lg btn-primary mt-xl-6" href="#!">Consulter<i class="fas fa-chevron-right ms-2"></i></a></div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div><!-- end of .container-->
+        </div>
 
       </section>
-      <!-- <section> close ============================-->
-      <!-- ============================================-->
 
-
-      <section class="py-0">
-        <div class="bg-holder" style="background-image:url(assets/img/gallery/cta-two-bg.png);background-position:center;background-size:cover;">
-        </div>
-        <!--/.bg-holder-->
-
-        <div class="container">
-          <div class="row flex-center">
-            <div class="col-xxl-9 py-7 text-center">
-              <h1 class="fw-bold mb-4 text-white fs-6">Are you ready to order <br />with the best deals? </h1><a class="btn btn-danger" href="#"> PROCEED TO ORDER<i class="fas fa-chevron-right ms-2"></i></a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
-      <section class="py-0 pt-7 bg-1000">
-
+      <section class="py-0 pt-7 bg-1000" style="background-image:url(assets/img/gallery/footer_bg.webp);background-position:center;background-size:cover;">
         <div class="container">
           <hr class="text-900" />
           <div class="row">
             <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-3">
-              <h5 class="lh-lg fw-bold text-white">COMPANY</h5>
-              <ul class="list-unstyled mb-md-4 mb-lg-0">
-                <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">About Us</a></li>
-                <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">Team</a></li>
-                <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">Careers</a></li>
-                <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">blog</a></li>
-              </ul>
+              <h5 class="lh-lg fw-bold text-center">A Propos</h5>
+              <div style="display: flex;justify-content: center;">
+                <ul style="display: flex;justify-content: center;flex-direction: column;" class="list-unstyled mb-md-4 mb-lg-0">
+                  <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">Depuis des siècles, notre restaurant est le repaire secret des âmes égarées, où les zombies et les momies trouvent refuge et festin. Une oasis de saveurs macabres et de délices lugubres, où chaque plat raconte une histoire d'amour entre le monde des vivants et celui des morts.</a></li>
+                </ul>
+              </div>
             </div>
             <div class="col-6 col-md-4 col-lg-3 col-xxl-2 col-lg-3 mb-3">
-              <h5 class="lh-lg fw-bold text-white">CONTACT</h5>
-              <ul class="list-unstyled mb-md-4 mb-lg-0">
-                <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">Help &amp; Support</a></li>
-                <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">Partner with us </a></li>
-                <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">Ride with us</a></li>
-                <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">Ride with us</a></li>
+              <h5 class="lh-lg fw-bold text-center">CONTACT</h5>
+              <ul class="list-unstyled mb-md-4 mb-lg-0" style="width: 100%;display: flex;flex-direction: column;align-items: center;">
+                <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">Contact</a></li>
+                <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">Nos partenaires</a></li>
+                <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">Rejoindre nos équipes</a></li>
               </ul>
             </div>
             <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-3">
-              <h5 class="lh-lg fw-bold text-white">FOLLOW US</h5>
-              <ul class="list-unstyled mb-md-4 mb-lg-0">
-                <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">Terms &amp; Conditions</a></li>
-                <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">Refund &amp; Cancellation</a></li>
-                <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">Privacy Policy</a></li>
-                <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">Cookie Policy</a></li>
-              </ul>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-3">
-              <h5 class="lh-lg fw-bold text-white">FOLLOW US</h5>
-              {% include 'home/components/social_media_item.html.twig' %}
+              <h5 class="lh-lg fw-bold text-center">NOS RESEAUX SOCIAUX</h5>
+              <div style="display:flex;justify-content: center;align-items: center;">
+                {% include 'home/components/social_media_item.html.twig' %}
+              </div>
             </div>
             </div>
           </div>
           <hr class="border border-800" />
-        </div><!-- end of .container-->
+        </div>
 
       </section>
-      <!-- <section> close ============================-->
-      <!-- ============================================-->
-    <!-- ===============================================-->
-    <!--    End of Main Content-->
-    <!-- ===============================================-->
-
-
-
-
-    <!-- ===============================================-->
-    <!--    JavaScripts-->
-    <!-- ===============================================-->
+      
     <script src="vendors/@popperjs/popper.min.js"></script>
     <script src="vendors/bootstrap/bootstrap.min.js"></script>
     <script src="vendors/is/is.min.js"></script>

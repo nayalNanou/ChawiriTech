@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome! Oissuya{% endblock %}</title>
+        <title>{% block title %}Le Bistro des Macchabés{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         <link rel="stylesheet" href="{{ asset('vendors/bootstrap/bootstrap.min.js') }}">
         {% block stylesheets %}
@@ -39,7 +39,7 @@
             <div class="ui center aligned page grid">
                 <div class="one column row">
                 <div class="sixteen wide column">
-                    <h3 class="ui header">Nos restaurants</h3>
+                    <h3 class="ourRestaurants ui header">Nos restaurants</h3>
                 </div>
                 </div>
                 <div class="three column divided row">
@@ -62,14 +62,14 @@
             </div>
         </div>
 
-        <div class="ui left demo sidebar vertical inverted menu" style="color: white;background: linear-gradient(183deg, rgba(2,0,36,1) 0%, rgba(28,56,21,1) 57%, rgba(98,124,98,1) 100%); background-image: url('{{ asset('images/zombie_user.webp') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <div class="ui left demo sidebar vertical inverted menu" style="color: white;">
             <div style="background:rgba(0,0,0,0.5); height:100%">
                 <div style="padding-top: 150px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                    <h3>Plat de la Semaine <span style="font-size: larger;color: #438958;font-weight: 721;">Zombie</span></h3>
+                    <h3 class="titleMenuOfTheWeek">Plat de la Semaine <span style="font-size: larger;color: #1a4d29;font-weight: 721;">Zombie</span></h3>
                     <img src="{{ asset('images/platcerveau-removebg-preview.webp') }}" alt="Votre Image" style="width: 150px; height: 150px;">
                 </div>
                 <div style="text-align: center; padding:10px">
-                    <h3>Cerveaux périmées</h3>
+                    <h3 style="color: white;">Cerveaux périmées</h3>
                     <p>Délicieuse soupe de cerveaux humains mijotés avec des épices et herbes fraîches, accompagné d'ongles sautés frais
                     </p>
                     <br>
@@ -77,14 +77,14 @@
                 </div>
             </div>
         </div>
-        <div class="ui right demo sidebar vertical inverted menu"  style="color: white;background: linear-gradient(194deg, rgba(2,0,36,1) 0%, rgba(78,79,28,1) 58%, rgba(129,111,32,1) 74%); background-image: url('{{ asset('images/momie_user.webp') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <div class="ui right demo sidebar vertical inverted menu"  style="color: white;">
             <div style="background:rgba(0,0,0,0.5); height:100%">
                 <div style="padding-top: 150px;display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                    <h3>Plat de la Semaine <span style="font-weight: 800;font-size: larger;color: #bf8744;">Momie</span></h3>
+                    <h3 class="titleMenuOfTheWeek">Plat de la Semaine <span style="font-weight: 800;font-size: larger;color: #bf8744;">Momie</span></h3>
                     <img src="{{ asset('images/brochette_doigts.webp') }}" alt="Votre Image" style="border-radius: 50%; width: 150px; height: 150px;">
                 </div>
                 <div style="text-align: center; padding: 10px;">
-                    <h3>Brochette de Doigts Émincés Épicés</h3>
+                    <h3 style="color: white;">Brochette de Doigts Émincés Épicés</h3>
                     <p>Nos brochettes de doigts émincés épicés sont préparées avec soin à partir de doigts humains fraîchement coupés.
                     <br>
                     <br></p>
@@ -94,28 +94,28 @@
         </div>
 
         <div class="ui bottom demo inverted nine item labeled icon sidebar menu" style="background-color:white;">
-            <a class="item" style="color: black;">
-                <i class="home icon"></i>
+            <a class="item ItemMenu" style="color: #9a844a;">
+                <i style="width: auto;" class="home icon ico"></i>
                 Accueil
             </a>
-            <a class="item" style="color: black;">
-                <i class="calendar alternate outline icon"></i>
+            <a class="item ItemMenu" style="color: #9a844a;">
+                <i style="width: auto;" class="calendar alternate outline icon ico"></i>
                 Réservez
             </a>
-            <a class="item" style="color: black;">
-                <i class="utensil spoon icon"></i>
+            <a class="item ItemMenu" style="color: #9a844a;">
+                <i style="width: auto;" class="utensil spoon icon ico"></i>
                 Nos Menus
             </a>
-            <a class="item" style="color: black;">
-                <i class="coffee icon"></i>
+            <a class="item ItemMenu" style="color: #9a844a">l
+                <i style="width: auto;" class="coffee icon ico"></i>
                 Nos chefs
             </a>
-            <a class="item" style="color: black;">
-                <i class="mail icon"></i>
+            <a class="item ItemMenu" style="color: #9a844a;">
+                <i style="width: auto;" class="mail icon ico"></i>
                 Nous contacter
             </a>
-            <a class="item" style="color: black;">
-                <i class="settings icon"></i>
+            <a class="item ItemMenu" style="color: #9a844a  ;">
+                <i style="width: auto;" class="settings icon ico"></i>
                 Settings
             </a>
         </div>
@@ -124,16 +124,60 @@
             <!-- Site content !-->
                <main class="main" id="top">
                     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" data-navbar-on-scroll="data-navbar-on-scroll">
-                        <div class="container"><a class="navbar-brand d-inline-flex" href="index.html"><img class="d-inline-block" src="assets/img/gallery/logo.svg" alt="logo" /><span class="text-1000 fs-3 fw-bold ms-2 text-gradient">foodwaGon</span></a>
+                        <div class="container"><a class="navbar-brand d-inline-flex" href="{{ path('home_index') }}"><img width="30px" class="d-inline-block" src="assets/img/gallery/logo2.svg" alt="logo" /><span class="text-1000 fs-3 fw-bold ms-2 text-gradient">Le Bistro des Maccabés</span></a>
                         <div class="HeaderTopMenuBtn collapse navbar-collapse border-top border-lg-0 my-2 mt-lg-0" id="navbarSupportedContent">
-                            
+                        <div id="ecoindex-badge" style="z-index:1;margin-left: 20px;}"></div>
+                        <script src="https://cdn.jsdelivr.net/gh/cnumr/ecoindex_badge@3/assets/js/ecoindex-badge.js" defer></script>    
+                        
                             <div class="d-flex mt-4 mt-lg-0 ms-lg-auto ms-xl-0">
-                            <div class="input-group-icon pe-2"><i class="fas fa-search input-box-icon text-primary"></i>
-                                <input class="form-control border-0 input-box bg-100" type="search" placeholder="Search Food" aria-label="Search" />
-                            </div>
-                            <button class="HeaderBtnMenu btn btn-white shadow-warning text-warning" onclick="toggleSidebar()"> 
-                            <svg xmlns="http://www.w3.org/2000/svg" style="color:yellow;" width="25" height="25" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
-                            </button>
+                                <div class="ui search">
+                                    <div class="ui icon input">
+                                        <input class="prompt" type="text" placeholder="Recherche un plat...">
+                                        <i class="search icon"></i>
+                                    </div>
+                                    <div class="results"></div>
+                                </div>
+                                <script>
+                                    var content = [
+                                        { title: 'Andorra' },
+                                        { title: 'United Arab Emirates' },
+                                        { title: 'Afghanistan' },
+                                        { title: 'Antigua' },
+                                        { title: 'Anguilla' },
+                                        { title: 'Albania' },
+                                        { title: 'Armenia' },
+                                        { title: 'Netherlands Antilles' },
+                                        { title: 'Angola' },
+                                        { title: 'Argentina' },
+                                        { title: 'American Samoa' },
+                                        { title: 'Austria' },
+                                        { title: 'Australia' },
+                                        { title: 'Aruba' },
+                                        { title: 'Aland Islands' },
+                                        { title: 'Azerbaijan' },
+                                        { title: 'Bosnia' },
+                                        { title: 'Barbados' },
+                                        { title: 'Bangladesh' },
+                                        { title: 'Belgium' },
+                                        { title: 'Burkina Faso' },
+                                        { title: 'Bulgaria' },
+                                        { title: 'Bahrain' },
+                                        { title: 'Burundi' }
+                                        ];
+                                        $('.ui.search')
+                                            .search({
+                                               source: content,
+                                                onSelect: function(result, response) {
+                                                    window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(result.title);
+                                                }
+                                            });
+                                </script>
+
+                                
+
+                                <button class="HeaderBtnMenu btn btn-white shadow-warning text-warning" onclick="toggleSidebar()"> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" style="color:yellow;" width="25" height="25" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+                                </button>
                             </div>
                         </div>
                         </div>
