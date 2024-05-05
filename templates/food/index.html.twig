@@ -39,6 +39,10 @@
 		</div>
 
 		<div class="shopping-cart" id="shopping-cart">
+			<div class="element-hide-content" id="element-hide-content">
+
+			</div>
+
 			<button id="delete-all-food-order" class="delete-all-food-order">Retirer toutes les commandes</button>
 
 			<div class="order-list" id="order-list">
@@ -385,6 +389,41 @@
 
 		confirmOrder.addEventListener('click', function(e) {
 			alert('Votre commande a été confirmé avec succès !');
+		});
+
+
+		/* hide-content */
+
+		
+		const elementHideContent = document.getElementById('element-hide-content');
+
+		const containerShoppingCart = document.getElementById('shopping-cart');
+		let shoppingCartIsDisplayed = false;
+
+		containerShoppingCart.addEventListener('click', function(e) {
+			const elementIdentifier = e.target && e.target.id;
+ 
+			if (elementIdentifier != 'delete-all-food-order') {
+				if (!shoppingCartIsDisplayed) {
+					containerShoppingCart.style.minWidth = '340px';
+					containerShoppingCart.style.minHeight = '200px';
+					containerShoppingCart.style.maxHeight = '420px';
+					containerShoppingCart.style.borderRadius = '0px';
+
+					elementHideContent.style.display = 'none';
+
+					shoppingCartIsDisplayed = true;
+				} else {
+					containerShoppingCart.style.minWidth = '40px';
+					containerShoppingCart.style.minHeight = '40px';
+					containerShoppingCart.style.maxHeight = '40px';
+					containerShoppingCart.style.borderRadius = '10px';
+
+					shoppingCartIsDisplayed = false;
+
+					elementHideContent.style.display = 'block';
+				}
+			}
 		});
 	</script>
 {% endblock %}
