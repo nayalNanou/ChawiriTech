@@ -8,7 +8,7 @@
 
 {% block body %}
 	<div class="main">
-		<h1>Nos catégorie de plats</h1>
+		<h1 class="title-food-category">Nos catégorie de plats</h1>
 
 		<div class="food-category">
 			{% for foodCategory in foodCategories %}
@@ -19,26 +19,47 @@
 			{% endfor %}
 		</div>
 
-		<h2 id="food-category-name" class="food-category-name">Voici notre sélection de plats</h2>
+		<h2 id="food-category-name" class="title-food">Nos plats SANG sationnels</h2>
 
 		<div class="selected-foods" id="selected-foods">
 			{% for food in foods %}
-				<div class="food">
+				<div class="food" data-food-description="{{ food.description }}" data-food-name="{{ food.name }}" data-food-image="{{ food.image }}" data-food-price="{{ food.price }}" data-food-id="{{ food.id }}">
 					<img src="{{ asset('pictures/' ~ food.image) }}" alt="{{ food.name }}" />
-					<span>{{ food.name|capitalize }}</span>
+					<span class="food-name">{{ food.name|capitalize }}</span>
+					<span class="food-price">{{ food.price }}€</span>
+					<button id="button-order-now" class="button-order-now">Commander maintenant</button>
 				</div>
 			{% endfor %}
 		</div>
 
 		<div class="modal-show-more" id="modal-show-more">
-			<div class="modal-content">
+			<div class="modal-content" id="modal-content">
 
+			</div>
+		</div>
+
+		<div class="shopping-cart" id="shopping-cart">
+			<button id="delete-all-food-order" class="delete-all-food-order">Retirer toutes les commandes</button>
+
+			<div class="order-list" id="order-list">
+			</div>
+
+			<button id="confirm-order" class="confirm-order">Confirmer la commande</button>
+
+			<div class="total-price">
+				<span class="label">Total</span>
+				<span id="total-price-value" class="value">0€</span>
 			</div>
 		</div>
 	<div>
 
 	<script>
-		let baseUrl = "http://localhost:8000";
+		const baseUrl = "http://localhost:8000";
+		const transitionNumberOfSeconds = 300;
+
+		const shoppingCart = document.getElementById('order-list');
+		const totalPriceValue = document.getElementById('total-price-value');
+		const orderList = {};
 
 		const foodCategories = document.querySelectorAll('.food-category .card');
 		const foodCategoriesLen = foodCategories.length;
@@ -49,6 +70,20 @@
 		const h2FoodCategoryNameOldValue = h2FoodCategoryName.innerText;
 
 		const modalShowMore = document.getElementById('modal-show-more');
+		const modalContent = document.getElementById('modal-content');
+
+		modalContent.style.top = (parseInt(modalContent.offsetHeight, 10) * -1) + 'px';
+
+		modalShowMore.addEventListener('click', function(e) {
+			if (e.target.id == 'modal-show-more') {
+				this.style.opacity = 0;
+				this.style.zIndex = -1;
+
+				setTimeout(function() {
+					modalContent.style.top = (parseInt(modalContent.offsetHeight, 10) * -1) + 'px';
+				}, transitionNumberOfSeconds);
+			}
+		});
 
 		for (let i = 0; i < foodCategoriesLen; i++) {
 			foodCategories[i].addEventListener('click', function(e) {
@@ -72,7 +107,7 @@
 
 					selectedFoods.innerHTML = '';
 
-					h2FoodCategoryName.innerHTML = h2FoodCategoryNameOldValue + ' - ' + foodCategoryName;
+					h2FoodCategoryName.innerHTML = h2FoodCategoryNameOldValue + ' - Catégorie : ' + foodCategoryName;
 
 					for (let i = 0; i < foodsLen; i++) {
 						const foodImage = "{{ asset('pictures/') }}" + foods[i].image;
@@ -80,31 +115,276 @@
 						const divFood = document.createElement('div');
 						const imgFood = document.createElement('img');
 						const spanFoodName = document.createElement('span');
+						const spanFoodPrice = document.createElement('span');
+						const buttonOrderNow = document.createElement('button');
 
 						divFood.className = 'food';
 
 						imgFood.src = foodImage;
 						imgFood.alt = foods[i].name;
 
+						spanFoodName.className = 'food-name';
 						spanFoodName.innerText = foods[i].name;
+
+						spanFoodPrice.className = 'food-price';
+						spanFoodPrice.innerText = foods[i].price + "€";
+
+						buttonOrderNow.className = "button-order-now";
+						buttonOrderNow.id = "button-order-now";
+						buttonOrderNow.innerText = 'Commander maintenant';
+
+						buttonOrderNow.addEventListener('click', function(e) {
+							const formData = new FormData();
+
+							formData.append('foodName', foods[i].name);
+							formData.append('foodImage', foods[i].image);
+							formData.append('foodPrice', foods[i].price);
+
+							fetch (baseUrl + '/api/food/add_order', {
+								method: "post",
+								body: formData
+							}).then(function(response) {
+								if (response.ok) {
+									return response.json();
+								}
+							}).then(function(response) {
+								shoppingCart.innerHTML = '';
+
+								fetch (baseUrl + '/api/food/order_list', {
+									'method': 'GET',
+									'headers': {
+										'Accept': 'application/json',
+										'Content-Type': 'application/json'
+									}
+								})
+								.then((response) => {
+									if (response.ok) {
+										return response.json();
+									}
+								}).then((foods) => {
+
+
+									console.log(foods);
+
+									const foodsLen = foods.length;
+
+									shoppingCart.innerHTML = '';
+									let foodTotalPrice = 0;
+
+									for (let i = 0; i < foodsLen; i++) {
+										const divOrder = document.createElement('div');
+										divOrder.className = "order";
+
+										const foodImage = "{{ asset('pictures/') }}" + foods[i].image;
+
+										divOrder.innerHTML = (
+											'<img src="' + foodImage + '" alt="' + foods[i].name + '" />' +
+											'<div>' +
+												'<span class="food-name">' + foods[i].name + '</span>' +
+												'<span class="food-price">' + foods[i].price + '€</span>' +
+											'</div>'
+										);
+
+										shoppingCart.appendChild(divOrder);
+
+										foodTotalPrice = parseFloat(foodTotalPrice, 10) + parseFloat(foods[i].price, 10);
+
+										totalPriceValue.innerText = foodTotalPrice + '€';
+									}
+
+
+
+								});
+							});
+						});
 
 						divFood.appendChild(imgFood);
 						divFood.appendChild(spanFoodName);
+						divFood.appendChild(spanFoodPrice);
+						divFood.appendChild(buttonOrderNow);
 
 						selectedFoods.appendChild(divFood);
 
 						divFood.addEventListener('click', function(e) {
-							modalShowMore.style.zIndex = 10;
-							modalShowMore.style.opacity = 1;
+							const elementIdentifier = e.target && e.target.id;
 
-							modalShowMore.addEventListener('click', function(e) {
-								e.target.style.opacity = 0;
-								e.target.style.zIndex = -1;
-							});
+							if (elementIdentifier != 'button-order-now') {
+								modalShowMore.style.zIndex = 10;
+								modalShowMore.style.opacity = 1;
+
+								modalContent.innerHTML = (
+									'<img src="' + foodImage + '" alt="' + foods[i].name + '" />' +
+									'<div>' + 
+										'<h3>' + foods[i].name + '</h3>' +
+										'<p>' + foods[i].price + '€</p>' + 
+										'<p>' + foods[i].description + '</p>' +
+									'</div>'
+								);
+
+								setTimeout(function() {
+									modalContent.style.top = '0px';
+								}, transitionNumberOfSeconds);
+							}
 						});
 					}
 				});
 			});
 		}
+
+		/* All food */
+
+		const allFoods = document.querySelectorAll('.food');
+		const allFoodsLen = allFoods.length;
+
+		for (let i = 0; i < allFoodsLen; i++) {
+			allFoods[i].addEventListener('click', function(e) {
+				const elementIdentifier = e.target && e.target.id;
+
+				const foodImage = "{{ asset('pictures/') }}" + allFoods[i].dataset.foodImage;
+
+				if (elementIdentifier != 'button-order-now') {
+					modalShowMore.style.zIndex = 10;
+					modalShowMore.style.opacity = 1;
+
+					modalContent.innerHTML = (
+						'<img src="' + foodImage + '" alt="' + allFoods[i].dataset.foodName + '" />' +
+						'<div>' + 
+							'<h3>' + allFoods[i].dataset.foodName + '</h3>' +
+							'<p>' + allFoods[i].dataset.foodPrice + '€</p>' + 
+							'<p>' + allFoods[i].dataset.foodDescription + '</p>' +
+						'</div>'
+					);
+
+					setTimeout(function() {
+						modalContent.style.top = '0px';
+					}, transitionNumberOfSeconds);
+				} else {
+					const formData = new FormData();
+
+					formData.append('foodName', allFoods[i].dataset.foodName);
+					formData.append('foodImage', allFoods[i].dataset.foodImage);
+					formData.append('foodPrice', allFoods[i].dataset.foodPrice);
+
+					fetch (baseUrl + '/api/food/add_order', {
+						method: "post",
+						body: formData
+					}).then(function(response) {
+						if (response.ok) {
+							return response.json();
+						}
+					}).then(function(response) {
+						shoppingCart.innerHTML = '';
+
+						fetch (baseUrl + '/api/food/order_list', {
+							'method': 'GET',
+							'headers': {
+								'Accept': 'application/json',
+								'Content-Type': 'application/json'
+							}
+						})
+						.then((response) => {
+							if (response.ok) {
+								return response.json();
+							}
+						}).then((foods) => {
+
+							console.log(foods);
+
+							const foodsLen = foods.length;
+
+							shoppingCart.innerHTML = '';
+							let foodTotalPrice = 0;
+
+							for (let i = 0; i < foodsLen; i++) {
+								const divOrder = document.createElement('div');
+								divOrder.className = "order";
+
+								const foodImage = "{{ asset('pictures/') }}" + foods[i].image;
+
+								divOrder.innerHTML = (
+									'<img src="' + foodImage + '" alt="' + foods[i].name + '" />' +
+									'<div>' +
+										'<span class="food-name">' + foods[i].name + '</span>' +
+										'<span class="food-price">' + foods[i].price + '€</span>' +
+									'</div>'
+								);
+
+								shoppingCart.appendChild(divOrder);
+
+								foodTotalPrice = parseFloat(foodTotalPrice, 10) + parseFloat(foods[i].price, 10);
+
+								totalPriceValue.innerText = foodTotalPrice + '€';
+							}
+
+						});
+					});
+				}
+			});
+		}
+
+		/* shopping cart */
+
+		fetch (baseUrl + '/api/food/order_list', {
+			'method': 'GET',
+			'headers': {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			}
+		})
+		.then(function(response) {
+			if (response.ok) {
+				return response.json();
+			}
+		}).then((foods) => {
+			const foodsLen = foods.length;
+
+			shoppingCart.innerHTML = '';
+			let foodTotalPrice = 0;
+
+			for (let i = 0; i < foodsLen; i++) {
+				const divOrder = document.createElement('div');
+				divOrder.className = "order";
+
+				const foodImage = "{{ asset('pictures/') }}" + foods[i].image;
+
+				divOrder.innerHTML = (
+					'<img src="' + foodImage + '" alt="' + foods[i].name + '" />' +
+					'<div>' +
+						'<span class="food-name">' + foods[i].name + '</span>' +
+						'<span class="food-price">' + foods[i].price + '€</span>' +
+					'</div>'
+				);
+
+				shoppingCart.appendChild(divOrder);
+
+				foodTotalPrice = parseFloat(foodTotalPrice, 10) + parseFloat(foods[i].price, 10);
+
+				totalPriceValue.innerText = foodTotalPrice + '€';
+			}
+		});
+
+		/* button delete all food order */
+
+		const buttonDeleteAllFoodOrder = document.getElementById('delete-all-food-order');
+
+		buttonDeleteAllFoodOrder.addEventListener('click', function(e) {
+			fetch (baseUrl + '/api/food/delete_all_food_order')
+			.then(function(response) {
+				if (response.ok) {
+					return response.json();
+				}
+			})
+			.then(function(response) {
+				shoppingCart.innerHTML = '';
+			});
+		});
+
+		/* confirm-button */
+
+		const confirmOrder = document.getElementById('confirm-order');
+
+		confirmOrder.addEventListener('click', function(e) {
+			alert('Votre commande a été confirmé avec succès !');
+		});
 	</script>
 {% endblock %}

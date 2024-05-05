@@ -25,6 +25,9 @@ class Food
 	#[ORM\JoinColumn(name: 'food_category_id', referencedColumnName: 'id')]
 	private ?FoodCategory $foodCategory = null;
 
+	#[ORM\Column(name: 'price', type: 'string', nullable: true)]
+	private ?string $price = null;
+
 	public function getId()
 	{
 		return $this->id;
@@ -48,6 +51,11 @@ class Food
 	public function getFoodCategory()
 	{
 		return $this->foodCategory;
+	}
+
+	public function getPrice()
+	{
+		return $this->price;
 	}
 
 	public function setName(?string $name): self
@@ -74,6 +82,13 @@ class Food
 	public function setFoodCategory(?FoodCategory $foodCategory): self
 	{
 		$this->foodCategory = $foodCategory;
+
+		return $this;
+	}
+
+	public function setPrice(?string $price): self
+	{
+		$this->price = $price;
 
 		return $this;
 	}
