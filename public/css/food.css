@@ -184,6 +184,7 @@ div.modal-show-more div.modal-content img {
 
 div.modal-show-more div.modal-content h3 {
 	font-size: 2.4em;
+	color: white !important;
 }
 
 div.modal-show-more div.modal-content p {
@@ -203,7 +204,7 @@ div.modal-show-more div.modal-content p {
 	border: 1px solid silver;
 	border-radius: 10px;
 	position: fixed;
-	top: 34px;
+	top: 74px;
 	right: 34px;
 	max-width: 40px;
 	max-height: 40px;
@@ -211,15 +212,29 @@ div.modal-show-more div.modal-content p {
 	min-height: 40px;
 	transition: all linear 150ms;
 	overflow: hidden;
+	cursor: pointer;
 }
 
-.shopping-cart:hover {
+.element-hide-content {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	background-image: url("/pictures/icons8-caddie-50.png");
+	background-size: 100% 100%;
+	z-index: 100;
+	color: black;
+}
+
+/* .shopping-cart:hover {
 	transition: all linear 150ms;
 	min-width: 340px;
 	min-height: 200px;
 	max-height: 420px;
 	border-radius: 0px;
-}
+} */
 
 .shopping-cart .order-list {
 	overflow: auto;
