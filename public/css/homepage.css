@@ -3,5 +3,71 @@
 }
 
 .HeaderBtnMenu {
-   border: 2px solid #78866b !important
+   border: 2px solid #78866b !important;
+   height: fit-content;
+   margin-top: 20px;
+   padding: 0rem 0.3rem !important;
+}
+
+
+.imageCuisinier {
+    border-radius: 10px;
+}
+
+.chefSectionTitle {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.ChefSectionCard {
+    background-color: #9a844a;
+}
+
+.titleMenuOfTheWeek {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.SecondTitle {
+    color: #9a844a !important;
+    background-color: black;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 2.1rem;
+    padding: 0 14px;
+}
+
+.EvenWeeklyText {
+    display: flex;
+    color: white;
+    font-weight: 852.4;
+    font-size: 1.3rem;
+}
+
+.DayOfEventStyle {
+    font-size: 2.1rem;
+    padding: 0px 7px;
+    border: 2px solid #78866b;
+    background-color: white;
+    color: #78866b;
+}
+
+
+.ourRestaurants {
+    text-align: center;
+    background-color: #9a844a;
+    font-size: 2rem !important;
+}
+
+.ItemMenu {
+    color: #9a844a !important;
+    transition: transform 0.7s ease, color 0.3s ease;
+}
+
+.ItemMenu:hover {
+    transform: scale(1.25);
+    color: #78866b !important;
 }

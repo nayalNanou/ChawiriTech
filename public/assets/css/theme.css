@@ -2581,7 +2581,7 @@ progress {
   border-color: #ffd987;
   outline: 0;
   -webkit-box-shadow: 0 0 0 0.25rem rgba(255, 179, 14, 0.25);
-  box-shadow: 0 0 0 0.25rem rgba(255, 179, 14, 0.25);
+  box-shadow: 0 0 0 0.25rem #9a844a;
 }
 
 .form-control::-webkit-date-and-time-value {
@@ -3515,14 +3515,14 @@ fieldset:disabled .btn {
 
 .btn-primary {
   color: #616161;
-  background-color: #FFB30E;
-  border-color: #FFB30E;
+  background-color: #78866b;
+  border-color: #78866b;
 }
 
 .btn-primary:hover {
   color: #616161;
-  background-color: #ffbe32;
-  border-color: #ffbb26;
+  background-color: #9a844a;
+  border-color: #9a844a;
 }
 
 .btn-check:focus + .btn-primary, .btn-primary:focus {
@@ -9106,8 +9106,8 @@ fieldset:disabled .btn {
 }
 
 .py-5 {
-  padding-top: 3rem !important;
-  padding-bottom: 3rem !important;
+  /* padding-top: 3rem !important;
+  padding-bottom: 3rem !important; */
 }
 
 .py-6 {
@@ -9121,8 +9121,8 @@ fieldset:disabled .btn {
 }
 
 .py-8 {
-  padding-top: 7.5rem !important;
-  padding-bottom: 7.5rem !important;
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
 }
 
 .py-9 {
@@ -9492,7 +9492,7 @@ fieldset:disabled .btn {
 
 /* rtl:end:remove */
 .text-primary {
-  color: #FFB30E !important;
+  color: #9a844a !important;
 }
 
 .text-secondary {
@@ -9516,7 +9516,7 @@ fieldset:disabled .btn {
 }
 
 .text-light {
-  color: #F9FAFD !important;
+  color: #4e712d !important;
 }
 
 .text-dark {
@@ -9620,7 +9620,7 @@ fieldset:disabled .btn {
 }
 
 .bg-primary {
-  background-color: #FFB30E !important;
+  background-color: #78866b !important;
 }
 
 .bg-secondary {
@@ -9846,6 +9846,8 @@ fieldset:disabled .btn {
 
 .text-200 {
   color: #F5F5F5 !important;
+  background-color: #78866b;
+  padding: 3px;
 }
 
 .text-300 {
@@ -9869,7 +9871,10 @@ fieldset:disabled .btn {
 }
 
 .text-800 {
-  color: #616161 !important;
+  color: #9a844a !important;
+  background: #9a844a;
+  background: black;
+  border-radius: 5px;
 }
 
 .text-900 {
@@ -17571,8 +17576,8 @@ ul {
 }
 
 .text-gradient {
-  background: -o-linear-gradient(40deg, #fb3c00, #ffb800);
-  background: linear-gradient(50deg, #fb3c00, #ffb800);
+  background: -o-linear-gradient(40deg, #78866b, #9a844a);
+  background: linear-gradient(50deg, #78866b, #9a844a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
